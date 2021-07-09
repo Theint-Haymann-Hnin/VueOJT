@@ -63,6 +63,7 @@ export default {
         this.$axios
             .get("/api/users")
             .then((response) => {
+                
                 this.userList = response.data.data;
                 this.showList = this.userList;
             })

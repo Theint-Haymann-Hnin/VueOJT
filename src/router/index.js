@@ -7,6 +7,7 @@ import PostCreate from "../pages/post/PostCreate";
 import PostCreateConfirm from "../pages/post/PostCreateConfirm";
 import PostUpdate from "../pages/post/PostUpdate";
 import PostUpdateConfirm from "../pages/post/PostUpdateConfirm";
+import UploadPost from "../pages/post/UploadPost"
 import UserList from "../pages/user/UserList";
 import UserCreate from "../pages/user/UserCreate";
 import UserCreateConfirm from "../pages/user/UserCreateConfirm";
@@ -58,6 +59,11 @@ const routes = [
         path: "/post/update_confirm",
         name: "post_update_confirm",
         component: PostUpdateConfirm,
+    },
+    {
+        path: "/upload_post",
+        name: "upload_post",
+        component: UploadPost,
     },
     {
         path: "/",
