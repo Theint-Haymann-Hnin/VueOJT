@@ -29,16 +29,16 @@
             <template v-slot:[`item.title`]="{ item }">
                 <a v-if="item.title">{{item.title}}</a>
             </template>
-            <template v-slot:[`item.operation`]>
+            <template v-slot:[`item.operation`]="{ item }">
                 <v-row>
                     <div class="operation-btn">
-                        <v-btn color="success" class="post-list-btn" @click="update()">
+                        <v-btn color="success" class="post-list-btn" @click="update(item)">
                        <v-icon left>
                     edit
                     </v-icon> Edit</v-btn>
                     </div>
                     <div class="operation-btn">
-                        <v-btn color="error" class="post-list-btn">
+                        <v-btn color="error" class="post-list-btn" @click="deletePost(item)" >
                             <v-icon left>
                     delete
                     </v-icon>Delete</v-btn>

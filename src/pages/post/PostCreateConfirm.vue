@@ -4,12 +4,13 @@
         Post Create Confirm
     </v-card-title>
     <v-container>
-       <form>
-        
-      <v-col md='2.5'>Title : html</v-col>
-      <v-col md='2.5'>Description : sfdgfhgjhkjlktyui</v-col>
+       <form >
+    
+      <v-col md='2.5'>Title : {{this.$route.params.title}}</v-col>
+      <v-col md='2.5'>Description : {{this.$route.params.description}}</v-col>
+   
 
-      <v-text-field
+      <!-- <v-text-field
         v-model="title"
         clearable
         clear-icon="mdi-close-circle"
@@ -23,10 +24,10 @@
         label="Description"
         value=""
       ></v-textarea>
-  
+   -->
       <v-btn
         class="mr-4"
-        @click="submit" color="success"
+        @click="store()" color="success"
       >
         Create
       </v-btn>

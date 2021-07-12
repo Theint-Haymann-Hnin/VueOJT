@@ -21,13 +21,22 @@
       label="Confirm Password" :rules="confirm_pwdRules" class="mt-5"
       hide-details="auto"></v-text-field>
 
-      <v-select
-        v-model="select"
+      <!-- <v-select
+        v-model="type"
         :items="items"
         :rules="[v => !!v || 'Type is required']"
         label="Type"
         required class="mt-5"
-      ></v-select>
+      ></v-select> -->
+                      <v-select
+                    v-model="type"                    
+                    :items="userType"
+                    item-text="name"
+                    item-value="id"
+                    filled
+                    label="Type"
+                    dense  class="mt-5"
+              ></v-select>
 
       <v-text-field v-model="phone" type="text" 
       label="Phone" :rules="phoneRules" 
@@ -48,7 +57,7 @@
 
       <v-btn
         class="mr-4 mt-5"
-       @click="userCreate()"  color="success"
+       @click="confirmPage()"  color="success"
       >
         Confirm
       </v-btn>

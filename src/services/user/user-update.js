@@ -1,25 +1,13 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         name: '',
-    //         email: '',
-    //         password: '',
-    //         confirm_password: '',
-    //         type: '',
-    //         phone: '',
-    //         address: '',
-    //         dob: '',
-    //         profile: '',
-    //     }
-    // },
+   
     data: () => ({
         valid: true,
         name: "",
         email: "",
         password: "",
         confirm_password: "",
-        type: "",
+        userType:[{id:0,name:'Admin'},{id:1,name:'User'}],
         phone: "",
         address: "",
         dob: "",

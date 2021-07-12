@@ -23,7 +23,7 @@
   
       <v-btn
         class="mr-4 mt-5"
-       @click="postCreate()"  color="success"
+      color="success" @click="confirmPage"
       >
         Confirm
       </v-btn>

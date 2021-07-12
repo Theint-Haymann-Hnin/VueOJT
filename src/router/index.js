@@ -51,7 +51,7 @@ const routes = [
         component: PostCreateConfirm,
     },
     {
-        path: "/post/update",
+        path: "/post/update/:id",
         name: "post-update",
         component: PostUpdate,
     },

@@ -18,7 +18,7 @@
            <v-col md='2.5'>Phone : 0979805925 </v-col>
            <v-col md='2.5'>Date of Birth : 23456567</v-col>
            <v-col md='2.5'>Address : Yangon</v-col>
-      <v-text-field v-model="name" type="text" 
+      <!-- <v-text-field v-model="name" type="text" 
       label="Name" :rules="nameRules" 
       hide-details="auto"></v-text-field>
 
@@ -57,7 +57,7 @@
       <v-text-field v-model="profile" type="file" 
       label="Profile" :rules="profileRules" 
       hide-details="auto" class="mb-5 mt-5"></v-text-field>
-      
+       -->
       <v-btn
         class="mr-4 mt-5"
        @click="userCreate()"  color="success"

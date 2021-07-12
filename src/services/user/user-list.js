@@ -38,11 +38,15 @@ export default {
                 },
                 {
                     text: "Created at",
-                    value: "created-at",
+                    value: "created_at",
                 },
                 {
                     text: "Updated at",
                     value: "updated_at",
+                },
+                {
+                    text: "Operation",
+                    value: "operation",
                 },
             ],
            userList: [],

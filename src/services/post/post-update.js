@@ -1,15 +1,11 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         title: '',
-    //         description: '',
-    //     }
-    // },
     data: () => ({
         valid: true,
-        title: "",
-        description: "",
+        id:'',
+        title:'',
+        description: '',
+        status : '',
         error: "",
 
          // validation rules for title
@@ -21,6 +17,19 @@ export default {
             value => !!value || "The description field is required."
         ],
     }),
+    mounted() {
+        this.id =this.$route.params.id
+        this.$axios
+            .get("/api/posts/"+this.id)
+            .then((response) => {
+             this.title = response.data.title  
+             this.description = response.data.description 
+             this.status = response.data.status              
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    },
     computed: {
         ...mapGetters(["isLoggedIn"]),
         headers() {
@@ -31,9 +40,7 @@ export default {
             }
         },
     },
-    mounted() {
-        
-    },
+    
     methods: {
         /**
          * This is to filter posts of datatable.
@@ -43,11 +50,18 @@ export default {
              this.title = ''
              this.description = ''
           },
-          submit() {
-
-          },
+         
           postUpdate(){
-            this.$router.push({ name: "post_update_confirm" });
-        }
+            this.$router.push({ 
+                name: 'post_update_confirm',
+                params: { 
+                     title: this.title ,
+                     description : this.description,
+                     status: this.status,
+
+               }
+              })
+          }
+          
     },
 };

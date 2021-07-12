@@ -32,6 +32,10 @@ export default {
             ],
             postList: [],
             showList: [],
+            title: '',
+            description: '',
+            status: '',
+            
         };
     },
     computed: {
@@ -45,16 +49,9 @@ export default {
         },
     },
     mounted() {
-        this.$axios
-            .get("/api/posts")
-            .then((response) => {
-                // console.log(response.data.data)
-                this.postList = response.data.data;
-                this.showList = this.postList;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        this.findPost();
+            
+            
     },
     methods: {
         /**
@@ -75,11 +72,47 @@ export default {
                 name: "post-create"
             });
         },
-        update() {
-            this.$router.push({
-                name: "post-update"
+        update(item) {
+            // this.$router.push({name: 'post-update',item.id})
+            
+
+            this.$router.push({ 
+                name: 'post-update',
+                params: { 
+                    id: item.id,
+               }
+            })
+
+        },
+        deletePost(item) {
+            // alert('yes')
+            // this.$router.push({ 
+            //     params: { 
+            //         id: item.id,
+            //    }
+            // })
+
+            this.$axios
+            .delete("/api/posts/"+item.id)
+            .then((response) => {
+                console.log(response);
+                this.findPost();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        },
+        findPost(){
+            this.$axios
+            .get("/api/posts")
+            .then((response) => {
+                // console.log(response.data.data)
+                this.postList = response.data.data;
+                this.showList = this.postList;
+            })
+            .catch((err) => {
+                console.log(err);
             });
         }
-
     },
 };

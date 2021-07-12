@@ -1,25 +1,12 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         name: '',
-    //         email: '',
-    //         password: '',
-    //         confirm_password: '',
-    //         type: '',
-    //         phone: '',
-    //         address: '',
-    //         dob: '',
-    //         profile: '',
-    //     }
-    // },
     data: () => ({
         valid: true,
         name: "",
         email: "",
         password: "",
         confirm_password: "",
-        type: "",
+        userType:[{id:0,name:'Admin'},{id:1,name:'User'}],
         phone: "",
         address: "",
         dob: "",
@@ -63,10 +50,10 @@ export default {
             value => !!value || "Date of birth is required."
         ],
 
-         // validation rules for profile.
-         profileRules: [
-            value => !!value || "Profile is required."
-        ],
+    //    validation rules for profile.
+    //      profileRules: [
+    //         value => !!value || "Profile is required."
+    //     ],
 
 
 
@@ -105,7 +92,7 @@ export default {
           submit() {
 
           },
-          userCreate(){
+          confirmPage(){
             this.$router.push({ name: "user_create_confirm" });
         }
         

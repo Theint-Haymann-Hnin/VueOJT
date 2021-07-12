@@ -5,7 +5,6 @@ export default {
     data() {
         return {
             title: constants.APP_TITLE,
-            // userName: this.$store.getter.userName,
             
         };
     },

@@ -48,11 +48,19 @@ export default {
              this.title = ''
              this.description = ''
           },
-          submit() {
+          confirmPage(event) {
+              event.preventDefault()
+              this.$router.push({ 
+                  name: 'post_create_confirm',
+                  params: { 
+                       title: this.title ,
+                       description : this.description
+                 }
+                })
 
           },
-          postCreate(){
-            this.$router.push({ name: "post_create_confirm" });
-        }
+        //   postCreate(){
+        //     this.$router.push({ name: "post_create_confirm" });
+        // }
     },
 };

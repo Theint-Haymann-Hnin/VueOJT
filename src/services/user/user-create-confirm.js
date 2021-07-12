@@ -63,10 +63,10 @@ export default {
             value => !!value || "Date of birth is required."
         ],
 
-         // validation rules for profile.
-         profileRules: [
-            value => !!value || "Profile is required."
-        ],
+        //   validation rules for profile.
+        //  profileRules: [
+        //     value => !!value || "Profile is required."
+        // ],
 
 
 

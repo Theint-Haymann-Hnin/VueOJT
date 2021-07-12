@@ -5,9 +5,10 @@
     </v-card-title>
     <v-container>
        <form>
-          <v-col md='2.5'>Title : html</v-col>
-          <v-col md='2.5'>Description : sfdgfhgjhkjlktyui</v-col>
-      <v-text-field
+          <v-col md='2.5'>Title : {{this.$route.params.title}}</v-col>
+          <v-col md='2.5'>Description : {{this.$route.params.description}}</v-col>
+           <v-col md='2.5'>Status : {{this.$route.params.status}}</v-col>
+      <!-- <v-text-field
         v-model="title"
         clearable
         clear-icon="mdi-close-circle"
@@ -23,14 +24,14 @@
       ></v-textarea>
         <v-checkbox
         v-model="checkbox" label="status"
-      ></v-checkbox>
+      ></v-checkbox> -->
       <v-btn
         class="mr-4"
-        @click="submit" color="success"
+        color="success" @click="updatePost(1)"
       >
         Confirm
       </v-btn>
-      <v-btn @click="clear()" color="secondary">
+      <v-btn color="secondary"  @click="clear()">
         Cancel
       </v-btn>
     </form>

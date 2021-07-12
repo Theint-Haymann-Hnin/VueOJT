@@ -17,10 +17,11 @@
         clearable
         clear-icon="mdi-close-circle"
         label="Description"
-        value="" :rules="descriptionRules"
-      ></v-textarea>
+        value="" :rules="descriptionRules" v-model="description" 
+      > </v-textarea>
+
         <v-checkbox
-        v-model="checkbox" label="status"
+        v-model="status" label="status"
       ></v-checkbox>
       <v-btn
         class="mr-4"
