@@ -1,30 +1,32 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 export default {
     data: () => ({
         valid: true,
-        id:'',
-        title:'',
+        id: '',
+        title: '',
         description: '',
-        status : '',
+        status: '',
         error: "",
 
-         // validation rules for title
-         titleRules: [
+        // validation rules for title
+        titleRules: [
             value => !!value || "The title field is required."
         ],
-         // validation rules for title
-         descriptionRules: [
+        // validation rules for title
+        descriptionRules: [
             value => !!value || "The description field is required."
         ],
     }),
     mounted() {
-        this.id =this.$route.params.id
+        this.id = this.$route.params.id
         this.$axios
-            .get("/api/posts/"+this.id)
+            .get("/api/posts/" + this.id)
             .then((response) => {
-             this.title = response.data.title  
-             this.description = response.data.description 
-             this.status = response.data.status              
+                this.title = response.data.title
+                this.description = response.data.description
+                this.status = response.data.status
             })
             .catch((err) => {
                 console.log(err);
@@ -40,28 +42,29 @@ export default {
             }
         },
     },
-    
+
     methods: {
         /**
          * This is to filter posts of datatable.
          * @returns void
          */
-         clear () {
-             this.title = ''
-             this.description = ''
-          },
-         
-          postUpdate(){
-            this.$router.push({ 
-                name: 'post_update_confirm',
-                params: { 
-                     title: this.title ,
-                     description : this.description,
-                     status: this.status,
+        clear() {
+            this.title = ''
+            this.description = ''
+        },
 
-               }
-              })
-          }
-          
+        postUpdate() {
+            this.$router.push({
+                name: 'post_update_confirm',
+                params: {
+                    id: this.id,
+                    title: this.title,
+                    description: this.description,
+                    status: this.status,
+
+                }
+            })
+        }
+
     },
 };

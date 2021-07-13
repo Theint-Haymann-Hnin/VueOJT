@@ -2,6 +2,10 @@ import { mapGetters } from "vuex";
 export default {
     data() {
         return {
+            name: '',
+            email: '',
+            createFrom: '',
+            createTo: '',
            userInfo: null,
             dialogTitle: "",
             dialog: false,
@@ -64,16 +68,17 @@ export default {
         },
     },
     mounted() {
-        this.$axios
-            .get("/api/users")
-            .then((response) => {
+        this.findUser();
+    //     this.$axios
+    //         .get("/api/users")
+    //         .then((response) => {
                 
-                this.userList = response.data.data;
-                this.showList = this.userList;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    //             this.userList = response.data.data;
+    //             this.showList = this.userList;
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
     },
     methods: {
         /**
@@ -96,6 +101,50 @@ export default {
         },
         userCreate(){
             this.$router.push({ name: "user-create" });
+        },
+        update(item) {
+            // this.$router.push({name: 'post-update',item.id})
+            
+
+            this.$router.push({ 
+                name: 'user-update',
+                params: { 
+                    id: item.id,
+               }
+            })
+
+        },
+        
+        deleteUser(item) {
+           
+            this.$axios
+            .delete("/api/users/"+item.id)
+            .then((response) => {
+                console.log(response);
+                this.findUser();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        },
+        findUser(){
+            this.$axios
+            .get("/api/users/search", { params: { 
+                'name': this.name,
+                'email': this.email,
+                'start_date': this.createFrom,
+                'end_date': this.createTo,
+             } })
+            .then((response) => {
+                this.userList = response.data.data;
+                this.showList = this.userList;
+                console.log(response.data.data);
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
         }
     },
+    
 };

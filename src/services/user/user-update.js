@@ -70,8 +70,25 @@ export default {
             }
         },
     },
+
     mounted() {
-        
+        this.id = this.$route.params.id
+        this.$axios
+            .get("/api/users/" + this.id)
+            .then((response) => {
+                this.name = response.data.name
+                this.email = response.data.email
+                this.password = response.data.password
+                this.type = response.data.type
+                this.phone = response.data.phone
+                this.address = response.data.address
+                this.dob = response.data.dob
+
+                
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     },
     methods: {
         /**
@@ -93,9 +110,22 @@ export default {
           submit() {
 
           },
-          userUpdate(){
-            this.$router.push({ name: "user_update_confirm" });
+          userUpdate() {
+            this.$router.push({
+                name: 'user_update_confirm',
+                params: {
+                    id: this.id,
+                    name : this.name,
+                    email : this.email,
+                    password : this.password,
+                    type : this.type,
+                    phone : this.phone,
+                    address : this.address,
+                    dob : this.dob,
+
+                }
+            })
         }
-        
+
     },
 };

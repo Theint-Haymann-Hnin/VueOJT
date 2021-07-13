@@ -18,14 +18,18 @@
       <v-text-field v-model="email" type="text" 
       label="Email" :rules="emailRules" 
       hide-details="auto" class="mt-5"></v-text-field>
+      
+      <v-text-field v-model="password" type="password" 
+      label="Password" :rules="passwordRules" 
+      hide-details="auto" class="mt-5"></v-text-field>
      
-      <v-select
+      <!-- <v-select
         v-model="select"
         :items="items"
         :rules="[v => !!v || 'Type is required']"
         label="Type"
         required class="mt-5"
-      ></v-select>
+      ></v-select> -->
 
       <v-text-field v-model="phone" type="text" 
       label="Phone" :rules="phoneRules" 

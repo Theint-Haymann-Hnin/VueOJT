@@ -1,6 +1,7 @@
 export default {
     data: () => ({
         valid: true,
+        id:'',
         title:'',
         description: '',
         status : '',
@@ -16,6 +17,7 @@ export default {
         ],
     }),
     mounted() {
+        this.id = this.$route.params.id
         this.title =this.$route.params.title
         this.description =this.$route.params.description
         this.status =this.$route.params.status
@@ -32,9 +34,9 @@ export default {
              this.title = ''
              this.description = ''
           },
-          updatePost(item){
+          updatePost(){
             this.$axios
-            .put("/api/posts/"+item , {
+            .put("/api/posts/"+this.id , {
                 title : this.title,
                 description : this.description,
                 status: this.status,

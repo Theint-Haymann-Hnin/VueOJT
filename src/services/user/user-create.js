@@ -6,11 +6,10 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
-        userType:[{id:0,name:'Admin'},{id:1,name:'User'}],
+        // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
         phone: "",
         address: "",
         dob: "",
-        profile: "",
         error: "",
 
          // validation rules for user name.
@@ -86,15 +85,29 @@ export default {
              this.phone = ''
              this.address = ''
              this.dob = ''
-             this.profile = ''
-          },
           
-          submit() {
+        },
 
-          },
-          confirmPage(){
-            this.$router.push({ name: "user_create_confirm" });
-        }
+        //   confirmPage(){
+        //     this.$router.push({ name: "user_create_confirm" });
+        // }
+
+        confirmPage(event) {
+            event.preventDefault()
+            this.$router.push({ 
+                name: 'user_create_confirm',
+                params: { 
+                     name: this.name ,
+                     email : this.email ,
+                     password: this.password ,
+                     confirm_password: this.confirm_password,
+                     phone : this.phone ,
+                     address : this.address ,
+                     dob : this.dob ,
+               }
+              })
+
+        },
         
     },
 };

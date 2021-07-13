@@ -1,29 +1,16 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         name: '',
-    //         email: '',
-    //         password: '',
-    //         confirm_password: '',
-    //         type: '',
-    //         phone: '',
-    //         address: '',
-    //         dob: '',
-    //         profile: '',
-    //     }
-    // },
+    
     data: () => ({
         valid: true,
         name: "",
         email: "",
         password: "",
         confirm_password: "",
-        type: "",
+        // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
         phone: "",
         address: "",
         dob: "",
-        profile: "",
         error: "",
 
          // validation rules for user name.
@@ -68,19 +55,9 @@ export default {
         //     value => !!value || "Profile is required."
         // ],
 
-
-
-       
     }),
     computed: {
-        ...mapGetters(["isLoggedIn"]),
-        headers() {
-            if (!this.isLoggedIn) {
-                return this.headerList.slice(0, this.headerList.length - 1);
-            } else {
-                return this.headerList;
-            }
-        },
+        ...mapGetters(["userId"]),
     },
     mounted() {
         
@@ -99,15 +76,30 @@ export default {
              this.phone = ''
              this.address = ''
              this.dob = ''
-             this.profile = ''
+            //  this.profile = ''
           },
-          
-          submit() {
+          store(){
+            this.$axios
+            .post("/api/users", {
+                name : this.$route.params.name,
+                email : this.$route.params.email,
+                password : this.$route.params.password,
+                phone : this.$route.params.phone,
+                address : this.$route.params.address,
+                dob : this.$route.params.dob,
+                created_user_id : this.userId,
 
-          },
-        //   userCreate(){
-        //     this.$router.push({ name: "user_create_confirm" });
-        // }
-        
+
+            })
+            .then((response) => {
+                console.log(response)
+                this.$router.push({ name: "user-list" });
+             
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+         }
+          
     },
 };

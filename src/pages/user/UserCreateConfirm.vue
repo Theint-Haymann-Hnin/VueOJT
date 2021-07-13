@@ -11,16 +11,17 @@
           max-width="250"
           src="https://picsum.photos/id/11/500/300"
         ></v-img>
-          <v-col md='2.5'>Name : Theint Haymann Hnin</v-col>
-          <v-col md='2.5'>Email Address : thmh@gmail.com</v-col>
-           <v-col md='2.5'>Password : 12345678</v-col>
-           <v-col md='2.5'>Type : admin</v-col>
-           <v-col md='2.5'>Phone : 0979805925 </v-col>
-           <v-col md='2.5'>Date of Birth : 23456567</v-col>
-           <v-col md='2.5'>Address : Yangon</v-col>
+          <v-col md='2.5'>Name : {{this.$route.params.name}}</v-col>
+          <v-col md='2.5'>Email Address :{{this.$route.params.email}}</v-col>
+           <v-col md='2.5'>Password :{{this.$route.params.password}}</v-col>
+           <v-col md='2.5'>Type : {{this.$route.params.type}}</v-col>
+           <v-col md='2.5'>Phone : {{this.$route.params.phone}} </v-col>
+           <v-col md='2.5'>Date of Birth : {{this.$route.params.dob}}</v-col>
+           <v-col md='2.5'>Address : {{this.$route.params.address}}</v-col>
       <!-- <v-text-field v-model="name" type="text" 
       label="Name" :rules="nameRules" 
       hide-details="auto"></v-text-field>
+     
 
       <v-text-field v-model="email" type="text" 
       label="Email" :rules="emailRules" 
@@ -60,7 +61,7 @@
        -->
       <v-btn
         class="mr-4 mt-5"
-       @click="userCreate()"  color="success"
+       @click="store()"  color="success"
       >
         Confirm
       </v-btn>

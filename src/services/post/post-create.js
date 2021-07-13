@@ -1,11 +1,6 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         title: '',
-    //         description: '',
-    //     }
-    // },
+   
     data: () => ({
         valid: true,
         title: "",
@@ -59,8 +54,6 @@ export default {
                 })
 
           },
-        //   postCreate(){
-        //     this.$router.push({ name: "post_create_confirm" });
-        // }
+        
     },
 };

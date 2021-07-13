@@ -73,9 +73,6 @@ export default {
             });
         },
         update(item) {
-            // this.$router.push({name: 'post-update',item.id})
-            
-
             this.$router.push({ 
                 name: 'post-update',
                 params: { 
@@ -85,13 +82,7 @@ export default {
 
         },
         deletePost(item) {
-            // alert('yes')
-            // this.$router.push({ 
-            //     params: { 
-            //         id: item.id,
-            //    }
-            // })
-
+           
             this.$axios
             .delete("/api/posts/"+item.id)
             .then((response) => {
@@ -106,7 +97,6 @@ export default {
             this.$axios
             .get("/api/posts")
             .then((response) => {
-                // console.log(response.data.data)
                 this.postList = response.data.data;
                 this.showList = this.postList;
             })

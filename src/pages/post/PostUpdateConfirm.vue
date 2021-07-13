@@ -27,7 +27,7 @@
       ></v-checkbox> -->
       <v-btn
         class="mr-4"
-        color="success" @click="updatePost(1)"
+        color="success" @click="updatePost()"
       >
         Confirm
       </v-btn>

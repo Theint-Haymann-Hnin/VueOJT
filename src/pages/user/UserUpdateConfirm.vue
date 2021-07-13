@@ -10,18 +10,18 @@
           max-width="250"
           src="https://picsum.photos/id/11/500/300"
         ></v-img>
-         <v-col md='2.5' xs4>Name : Theint Haymann Hnin</v-col>
-          <v-col md='2.5' xs4>Email Address : thmh@gmail.com</v-col>
-           <v-col md='2.5' xs4>Password : 12345678</v-col>
-           <v-col md='2.5' xs4>Type : admin</v-col>
-           <v-col md='2.5' xs4>Phone : 0979805925 </v-col>
-           <v-col md='2.5' xs4>Date of Birth : 23456567</v-col>
-           <v-col md='2.5' xs4>Address : Yangon</v-col>
+         <v-col md='2.5' xs4>Name : {{this.$route.params.name}}</v-col>
+          <v-col md='2.5' xs4>Email Address : {{this.$route.params.email}}</v-col>
+           <v-col md='2.5' xs4>Password : {{this.$route.params.password}}</v-col>
+           <!-- <v-col md='2.5' xs4>Type : {{this.$route.params.type}}</v-col> -->
+           <v-col md='2.5' xs4>Phone : {{this.$route.params.phone}} </v-col>
+           <v-col md='2.5' xs4>Date of Birth : {{this.$route.params.dob}}</v-col>
+           <v-col md='2.5' xs4>Address : {{this.$route.params.address}}</v-col>
     </v-container>
     <v-container>
        <form>
         
-      <v-text-field v-model="name" type="text" 
+      <!-- <v-text-field v-model="name" type="text" 
       label="Name" :rules="nameRules" 
       hide-details="auto"></v-text-field>
 
@@ -51,11 +51,11 @@
 
       <v-text-field v-model="profile" type="file" 
       label="Profile" :rules="profileRules" 
-      hide-details="auto" class="mb-5 mt-5"></v-text-field>
+      hide-details="auto" class="mb-5 mt-5"></v-text-field> -->
       
       <v-btn
         class="mr-4 mt-5"
-       @click="userCreate()"  color="success"
+       @click="updateUser()"  color="success"
       >
         Confirm
       </v-btn>
