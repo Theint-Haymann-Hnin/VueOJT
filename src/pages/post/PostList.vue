@@ -6,21 +6,24 @@
         <v-form ref="form">
             <v-row class="filter-bar">
                 <v-col md="2.5">
-                    <v-text-field label="Search keyword" hide-details="auto"  prepend-icon="mdi-magnify"></v-text-field>
+                    <v-text-field label="Search keyword" hide-details="auto"  prepend-icon="mdi-magnify"  v-model="search_data" ></v-text-field>
                 </v-col>
-                <v-btn class="post-list-btn mr-4" color="primary">Search</v-btn>
+                <v-btn class="post-list-btn mr-4" color="primary" @click="findPost()">Search</v-btn>
                 <v-btn class="post-list-btn mr-4" color="primary" @click="postCreate()">
                     <v-icon left>
                     add
                     </v-icon>Create</v-btn>
-                <v-btn class="post-list-btn mr-4" color="primary">
-                    <v-icon left>
-                    fas fa-lock
-                    </v-icon>Upload</v-btn>
-                <v-btn class="post-list-btn mr-4" color="primary">
+                    <v-btn class="post-list-btn mr-4" color="primary" @click="excelDownload()">
                      <v-icon left>
                     download
-                    </v-icon>Download</v-btn>
+                    </v-icon>Download
+                </v-btn>
+                <v-btn class="post-list-btn mr-4" color="primary" @click="excelUploadPage()">
+                    <v-icon left>
+                    fas fa-lock
+                    </v-icon>Upload
+                </v-btn>
+               
             </v-row>
         </v-form>
     </v-card-title>

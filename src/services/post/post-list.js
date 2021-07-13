@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
     mapGetters
 } from "vuex";
@@ -35,6 +36,7 @@ export default {
             title: '',
             description: '',
             status: '',
+            search_data: ''
             
         };
     },
@@ -49,7 +51,7 @@ export default {
         },
     },
     mounted() {
-        this.findPost();
+        this.getAllPosts();
             
             
     },
@@ -87,22 +89,58 @@ export default {
             .delete("/api/posts/"+item.id)
             .then((response) => {
                 console.log(response);
-                this.findPost();
+                this.getAllPosts();
             })
             .catch((err) => {
                 console.log(err);
             });
         },
-        findPost(){
+
+        getAllPosts(){
             this.$axios
-            .get("/api/posts")
+                .get("/api/posts")
+                .then((response) => {
+                    this.postList = response.data.data;
+                    this.showList = this.postList;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        findPost(){
+            // console.log(this.search_data)
+            this.$axios
+            .get("/api/posts/search", { params: { 
+                'search_data': this.search_data
+             } })
             .then((response) => {
                 this.postList = response.data.data;
                 this.showList = this.postList;
+                console.log(response.data.data);
             })
             .catch((err) => {
                 console.log(err);
             });
+        },
+        excelDownload(){
+            axios.post("/api/exportExcel", {responseType: 'blob'})
+            .then(response=>{
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'post.xlsx'); //or any other extension
+                document.body.appendChild(link);
+            link.click();
+            });
+        },
+        excelUploadPage(){
+            this.$router.push({
+                name: "upload_post"
+            });
         }
-    },
-};
+   }
+    
+    
+}
+
+

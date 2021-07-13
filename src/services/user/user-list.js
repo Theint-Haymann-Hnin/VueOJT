@@ -129,7 +129,7 @@ export default {
         },
         findUser(){
             this.$axios
-            .get("/api/users/search", { params: { 
+            .get("/api/users_search", { params: { 
                 'name': this.name,
                 'email': this.email,
                 'start_date': this.createFrom,

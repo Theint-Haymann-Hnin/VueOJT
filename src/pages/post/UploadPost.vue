@@ -4,12 +4,12 @@
        Upload Post
     </v-card-title>
     <v-container>
-       <form action="">
-     <v-text-field v-model="password" type="file" 
+       <form id="importForm">
+     <v-text-field  type="file" 
       label="Browse" 
-      hide-details="auto" class="mt-5"></v-text-field>
+       class="mt-5" name="import_file"></v-text-field>
       
-      <v-btn color="primary" class="mt-5">
+      <v-btn color="primary" class="mt-5" @click="importExcel()" >
         Import File
       </v-btn>
     </form>
