@@ -6,10 +6,12 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
-        // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
+        type: 1,
         phone: "",
         address: "",
         dob: "",
+        profile: "",
+        items: ['Admin', 'User'],
         error: "",
 
          // validation rules for user name.
@@ -93,6 +95,9 @@ export default {
         // }
 
         confirmPage(event) {
+            // let data = new FormData();
+            // data.append('file', this.profile);
+
             event.preventDefault()
             this.$router.push({ 
                 name: 'user_create_confirm',
@@ -101,13 +106,26 @@ export default {
                      email : this.email ,
                      password: this.password ,
                      confirm_password: this.confirm_password,
+                     type : this.type,
                      phone : this.phone ,
                      address : this.address ,
                      dob : this.dob ,
+                     profile: this.profile,
                }
               })
 
         },
-        
+        selectType(){
+            if(this._data.type == 'Admin'){
+                this.type = 0;
+            }
+            else{
+                this.type =1;
+            }
+            console.log(this.type) 
+        },
+        onChange(e){
+            this.profile = e.target.files[0];
+        },
     },
 };

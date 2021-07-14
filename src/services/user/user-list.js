@@ -70,20 +70,18 @@ export default {
     },
     mounted() {
         this.findUser();
-    //     this.$axios
-    //         .get("/api/users")
-    //         .then((response) => {
-                
-    //             this.userList = response.data.data;
-    //             this.showList = this.userList;
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
     },
     methods: {
         format(value) {
             return moment(value).format('YYYY-MM-DD')
+        },
+        showUser(item){
+            this.$router.push({
+                name: 'userprofile',
+                params: {
+                    id: item.id
+                }
+            })
         },
         /**
          * This is to filter posts of datatable.

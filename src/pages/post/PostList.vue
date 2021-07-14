@@ -71,9 +71,7 @@
     </v-container>
   </v-card>
 </template>
-
 <script src="../../services/post/post-list.js">
 </script>
-
 <style scoped src="../../assets/css/pages/post/post-list.css">
 </style>

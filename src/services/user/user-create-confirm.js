@@ -7,7 +7,7 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
-        // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
+         type:1,
         phone: "",
         address: "",
         dob: "",
@@ -76,7 +76,7 @@ export default {
              this.phone = ''
              this.address = ''
              this.dob = ''
-            //  this.profile = ''
+             this.profile = ''
           },
           store(){
             this.$axios
@@ -84,13 +84,15 @@ export default {
                 name : this.$route.params.name,
                 email : this.$route.params.email,
                 password : this.$route.params.password,
+                type : this.$route.params.type ,
                 phone : this.$route.params.phone,
                 address : this.$route.params.address,
                 dob : this.$route.params.dob,
+                profile : this.$route.params.profile,
                 created_user_id : this.userId,
 
-
             })
+
             .then((response) => {
                 console.log(response)
                 this.$router.push({ name: "user-list" });

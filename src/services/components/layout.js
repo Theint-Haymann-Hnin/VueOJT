@@ -43,7 +43,9 @@ export default {
         showProfile() {
             this.$router.push({
                 name: 'userprofile',
-    
+                params: {
+                    id: this.$store.getters.userId
+                }
             })
         },
         passwordChangeScreen() {
@@ -51,21 +53,16 @@ export default {
                 name: "change_password"
             });
         },
-        userList(){
+        userList() {
             this.$router.push({
                 name: "user-list",
             })
         },
-        userProfile(){
-            this.$router.push({
-                name: "userprofile",
-            })
-        },
-        postList(){
+        postList() {
             this.$router.push({
                 name: "post-list",
             })
         },
     },
-    
+
 };

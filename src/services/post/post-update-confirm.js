@@ -24,7 +24,6 @@ export default {
         
     },
     
-    
     methods: {
         /**
          * This is to filter posts of datatable.
@@ -48,7 +47,6 @@ export default {
                 this.$router.push({ name: "post-list" });
              
             })
-          
     },
 },
 };

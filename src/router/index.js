@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 import Login from "../pages/user/Login";
 import PostList from "../pages/post/PostList";
 import PostCreate from "../pages/post/PostCreate";
@@ -19,8 +18,7 @@ import store from "../store";
 
 Vue.use(VueRouter);
 
-const routes = [
-    {
+const routes = [{
         path: "/login",
         name: "login",
         component: Login,
@@ -95,7 +93,7 @@ const routes = [
         component: UserUpdateConfirm,
     },
     {
-        path: "/user_profile",
+        path: "/user_profile/:id",
         name: "userprofile",
         component: UserProfile,
     },

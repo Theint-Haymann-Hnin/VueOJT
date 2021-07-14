@@ -13,7 +13,7 @@
                           </v-list-item>
                     </div>
                     <div class="route-links">
-                    <v-list-item @click="userProfile()">
+                    <v-list-item @click="showProfile()">
                                     <v-list-item-title>User</v-list-item-title>
                           </v-list-item>
                           </div> 

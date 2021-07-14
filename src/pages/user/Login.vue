@@ -23,10 +23,7 @@
     </v-form>
 </v-card>
 </template>
-
 <script src="../../services/user/login.js">
 </script>
-
 <style scoped src="../../assets/css/pages/user/login..css">
-
 </style>

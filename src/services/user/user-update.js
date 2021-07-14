@@ -7,11 +7,12 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
-        userType:[{id:0,name:'Admin'},{id:1,name:'User'}],
+        type: 1,
         phone: "",
         address: "",
         dob: "",
         profile: "",
+        items: ['Admin', 'User'],
         error: "",
 
          // validation rules for user name.
@@ -51,10 +52,6 @@ export default {
             value => !!value || "Date of birth is required."
         ],
 
-         // validation rules for profile.
-         profileRules: [
-            value => !!value || "Profile is required."
-        ],
 
 
 
@@ -123,6 +120,15 @@ export default {
                     dob : this.dob,
                 }
             })
+        },
+        selectType(){
+            if(this._data.type == 'Admin'){
+                this.type = 0;
+            }
+            else{
+                this.type =1;
+            }
+            console.log(this.type) 
         }
 
     },

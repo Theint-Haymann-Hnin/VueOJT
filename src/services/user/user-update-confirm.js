@@ -7,11 +7,10 @@ export default {
         password: "",
         confirm_password: "",
         loginUserID: '',
-        // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
+        type: 1,
         phone: "",
         address: "",
         dob: "",
-        // profile: "",
         error: "",
 
         // validation rules for user name.
@@ -92,7 +91,6 @@ export default {
         },
 
         updateUser() {
-            // alert(this.loginUserID)
             this.$axios
                 .put("/api/users/" + this.id, {
                     id: this.id,

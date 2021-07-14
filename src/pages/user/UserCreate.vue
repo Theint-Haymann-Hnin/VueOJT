@@ -4,7 +4,7 @@
        User Create
     </v-card-title>
     <v-container>
-       <form>
+       <form enctype="multipart/form-data">
       <v-text-field v-model="name" type="text" 
       label="Name" :rules="nameRules" 
       hide-details="auto"></v-text-field>
@@ -21,15 +21,11 @@
       label="Confirm Password" :rules="confirm_pwdRules" class="mt-5"
       hide-details="auto"></v-text-field>
     
-                      <!-- <v-select
-                    v-model="type"                    
-                    :items="type"
-                    item-text="name"
-                    item-value="id"
-                    filled
-                    label="Type"
-                    dense  class="mt-5"
-              ></v-select> -->
+        <v-select
+        :items="items"
+        :menu-props="{ top: true, offsetY: true }"
+        label="Type" class="mt-5" v-model="type" @change="selectType()"
+      ></v-select>
 
       <v-text-field v-model="phone" type="text" 
       label="Phone" :rules="phoneRules" 
@@ -43,10 +39,9 @@
       label="Date of Birth" :rules="dobRules" 
       hide-details="auto"  class="mt-5"></v-text-field>
 
-      <!-- <v-text-field v-model="profile" type="file" 
+      <v-text-field v-model="profile" type="file" 
       label="Profile" 
-      hide-details="auto" class="mb-5 mt-5"></v-text-field> -->
-
+      hide-details="auto" class="mb-5 mt-5" @change="onChange()"></v-text-field>
 
       <v-btn
         class="mr-4 mt-5"

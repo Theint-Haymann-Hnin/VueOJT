@@ -6,9 +6,6 @@ export default {
           import_file: '',
         }
       },
-       
-    
-   
     methods: {
         importExcel(){
             let import_form = document.querySelector('#importForm');

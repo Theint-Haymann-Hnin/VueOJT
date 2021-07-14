@@ -3,8 +3,7 @@ export default {
    
     data: () => ({
         user: null,
-
-
+        id:'',
        
     }),
     computed: {
@@ -12,9 +11,16 @@ export default {
     },
 
     mounted() {
-        this.user = this.$store.getters.user
-        console.log(this.user)
-        
+        this.id = this.$route.params.id
+        this.$axios
+        .get("/api/users/"+ this.id)
+        .then((response) => {
+            console.log(response.data)
+            this.user = response.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     },
     methods: {
         update(item) {
