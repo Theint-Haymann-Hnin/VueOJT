@@ -12,7 +12,6 @@
         ></v-img>
          <v-col md='2.5' xs4>Name : {{this.$route.params.name}}</v-col>
           <v-col md='2.5' xs4>Email Address : {{this.$route.params.email}}</v-col>
-           <v-col md='2.5' xs4>Password : {{this.$route.params.password}}</v-col>
            <!-- <v-col md='2.5' xs4>Type : {{this.$route.params.type}}</v-col> -->
            <v-col md='2.5' xs4>Phone : {{this.$route.params.phone}} </v-col>
            <v-col md='2.5' xs4>Date of Birth : {{this.$route.params.dob}}</v-col>

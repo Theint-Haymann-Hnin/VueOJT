@@ -6,6 +6,7 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
+        loginUserID: '',
         // type:[{id:0,name:'Admin'},{id:1,name:'User'}],
         phone: "",
         address: "",
@@ -69,7 +70,7 @@ export default {
         this.phone = this.$route.params.phone
         this.address = this.$route.params.address
         this.dob = this.$route.params.dob
-
+        this.loginUserID = this.$store.getters.userId
     },
     methods: {
         /**
@@ -79,8 +80,6 @@ export default {
         clear() {
             this.name = ''
             this.email = ''
-            this.password = ''
-            this.confirm_password = ''
             this.type = ''
             this.phone = ''
             this.address = ''
@@ -93,16 +92,17 @@ export default {
         },
 
         updateUser() {
+            // alert(this.loginUserID)
             this.$axios
                 .put("/api/users/" + this.id, {
                     id: this.id,
                     name: this.name,
                     email: this.email,
-                    password: this.password,
                     type: this.type,
                     phone: this.phone,
                     address: this.address,
                     dob: this.dob,
+                    updated_user_id: this.loginUserID
                 })
                 .then((response) => {
                     console.log(response)

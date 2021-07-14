@@ -47,6 +47,11 @@ export default new Vuex.Store({
                 return state.user.data.user.name;
             }
         },
+        user: (state) => {
+            if (state.user && state.user.data.user) {
+                return state.user.data.user;
+            }
+        },
     },
     plugins: [createPersistedState()],
 });

@@ -18,7 +18,7 @@
       hide-details="auto" class="mt-5 mb-5"></v-text-field>
   
       
-      <v-btn color="primary" class="mt-5">
+      <v-btn color="primary" class="mt-5" @click="updatePassword()">
         Update Password
       </v-btn>
     </form>

@@ -19,9 +19,6 @@
       label="Email" :rules="emailRules" 
       hide-details="auto" class="mt-5"></v-text-field>
       
-      <v-text-field v-model="password" type="password" 
-      label="Password" :rules="passwordRules" 
-      hide-details="auto" class="mt-5"></v-text-field>
      
       <!-- <v-select
         v-model="select"

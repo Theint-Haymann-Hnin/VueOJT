@@ -12,7 +12,7 @@
           src="https://picsum.photos/id/11/500/300"
         ></v-img> </v-col>
         <v-col md='2.5' xs4>
-          <v-btn color="success">
+          <v-btn color="success" @click="update(item)">
                 <v-icon left>
             edit
             </v-icon> <a href="/user/update" class="edit">Edit</a></v-btn> 
@@ -22,11 +22,12 @@
         </v-row>
      <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Name </v-col>
-                <v-col md='2.5' xs4>{{user.name}}</v-col>
+                <v-col md='2.5' xs4> {{user.name}}</v-col>
+                <!-- <v-col md='2.5' xs4>{{user.name}}</v-col> -->
       </v-row>
        <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Email Address </v-col>
-                <v-col md='2.5' xs4>thmh@gmail.com</v-col>
+                <v-col md='2.5' xs4>{{user.email}}</v-col>
       </v-row>
        <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Type </v-col>
@@ -34,15 +35,15 @@
       </v-row>
        <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Phone </v-col>
-                <v-col md='2.5' xs4>09798059425</v-col>
+                <v-col md='2.5' xs4>{{user.phone}}</v-col>
       </v-row>
        <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Date of Birth </v-col>
-                <v-col md='2.5' xs4>2123456</v-col>
+                <v-col md='2.5' xs4>{{user.dob}}</v-col>
       </v-row>
        <v-row ma-0 pa-0 fill-height>
                 <v-col md='2.5' xs4>Address </v-col>
-                <v-col md='2.5' xs4>ertyuiert</v-col>
+                <v-col md='2.5' xs4>{{user.address}}</v-col>
       </v-row>
     </v-container>
 </v-card>

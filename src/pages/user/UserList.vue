@@ -107,6 +107,12 @@
         <template v-slot:[`item.name`]="{ item }">
           <a v-if="item.name">{{ item.name }}</a>
         </template>
+        <template v-slot:[`item.created_at`]="{ item }">
+          <v-card-text v-if="item.created_at" >{{ format(item.created_at) }}</v-card-text>
+        </template>
+        <template v-slot:[`item.updated_at`]="{ item }">
+          <v-card-text v-if="item.updated_at" >{{ format(item.updated_at) }}</v-card-text>
+        </template>
         <template v-slot:[`item.operation`]="{ item }">
           <v-row>
             <div class="operation-btn">

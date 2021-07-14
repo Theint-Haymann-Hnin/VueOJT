@@ -1,4 +1,5 @@
 import { mapGetters } from "vuex";
+import moment from "moment";
 export default {
     data() {
         return {
@@ -81,6 +82,9 @@ export default {
     //         });
     },
     methods: {
+        format(value) {
+            return moment(value).format('YYYY-MM-DD')
+        },
         /**
          * This is to filter posts of datatable.
          * @returns void
@@ -103,9 +107,6 @@ export default {
             this.$router.push({ name: "user-create" });
         },
         update(item) {
-            // this.$router.push({name: 'post-update',item.id})
-            
-
             this.$router.push({ 
                 name: 'user-update',
                 params: { 

@@ -95,12 +95,10 @@ const routes = [
         component: UserUpdateConfirm,
     },
     {
-        path: "/userprofile",
+        path: "/user_profile",
         name: "userprofile",
         component: UserProfile,
     },
-    
-    
 ];
 
 const router = new VueRouter({

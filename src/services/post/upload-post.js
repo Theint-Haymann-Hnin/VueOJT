@@ -16,6 +16,7 @@ export default {
             this.$axios.post('/api/importExcel', data)
             .then((response)=>{
                 console.log(response);
+                this.$router.push({ name: "post-list" });
             })
         }
 

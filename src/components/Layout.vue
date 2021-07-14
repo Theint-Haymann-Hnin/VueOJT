@@ -6,11 +6,22 @@
                 <v-row>
                     <v-toolbar-title class="title">
                         <span>{{ title }}</span>
-                         <!-- <span>{{ userId }}</span> -->
-                         <!-- <span>{{ userType }}</span> -->
                     </v-toolbar-title>
                     <div class="route-links">
+                         <v-list-item @click="userList()">
+                                    <v-list-item-title>Users</v-list-item-title>
+                          </v-list-item>
                     </div>
+                    <div class="route-links">
+                    <v-list-item @click="userProfile()">
+                                    <v-list-item-title>User</v-list-item-title>
+                          </v-list-item>
+                          </div> 
+                          <div class="route-links"> 
+                        <v-list-item @click="postList()">
+                                    <v-list-item-title>Posts</v-list-item-title>
+                          </v-list-item>
+                           </div>  
                     <v-spacer></v-spacer>
                     <div class="route-links">
                         <v-menu offset-y v-if="isLoggedIn">
@@ -23,7 +34,12 @@
                             <v-list>
                                 <v-list-item @click="showProfile()">
                                     <v-list-item-title>Profile</v-list-item-title>
+                                </v-list-item> 
+
+                                 <v-list-item @click="passwordChangeScreen()">
+                                    <v-list-item-title>Change Password</v-list-item-title>
                                 </v-list-item>
+
                                 <v-list-item @click="logout()">
                                     <v-list-item-title>Logout</v-list-item-title>
                                 </v-list-item>

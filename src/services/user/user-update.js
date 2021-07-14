@@ -117,12 +117,10 @@ export default {
                     id: this.id,
                     name : this.name,
                     email : this.email,
-                    password : this.password,
                     type : this.type,
                     phone : this.phone,
                     address : this.address,
                     dob : this.dob,
-
                 }
             })
         }

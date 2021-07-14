@@ -1,23 +1,13 @@
 import { mapGetters } from "vuex";
 export default {
-    // data() {
-    //     return {
-    //         name: '',
-    //         email: '',
-    //         password: '',
-    //         confirm_password: '',
-    //         type: '',
-    //         phone: '',
-    //         address: '',
-    //         dob: '',
-    //         profile: '',
-    //     }
-    // },
+  
     data: () => ({
         valid: true,
+        id:'',
         password: "",
         new_password: "",
         confirm_password: "",
+        loginUserID:"",
         error: "",
 
          // validation rules for user name.
@@ -48,17 +38,30 @@ export default {
         },
     },
     mounted() {
-        
+        this.loginUserID = this.$store.getters.userId
+        this.id = this.$store.getters.userId
     },
     methods: {
         /**
          * This is to filter posts of datatable.
          * @returns void
          */
-          submit() {
+         updatePassword() {
+            this.$axios
+                .post("/api/change_password/" + this.loginUserID, {
+                    id: this.id,
+                    password: this.password,
+                    new_password: this.new_password,
+                    login_user_id : this.loginUserID,
+                })
+                .then((response) => {
+                    console.log(response)
+                    this.$router.push({
+                        name: "user-list"
+                    });
 
-          },
-         
-        
+                })
+        }
     },
 };
+

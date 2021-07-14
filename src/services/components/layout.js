@@ -1,12 +1,20 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 import constants from "../../constants";
 
 export default {
     data() {
         return {
             title: constants.APP_TITLE,
-            
+            id: "",
+            name: "",
+            email: "",
+            phone: "",
+            dob: "",
+            address: "",
         };
+
     },
     computed: {
         ...mapGetters(["isLoggedIn", "userType", "userName"]),
@@ -20,7 +28,9 @@ export default {
             this.$store
                 .dispatch("logout")
                 .then(() => {
-                    this.$router.push({ name: "login" });
+                    this.$router.push({
+                        name: "login"
+                    });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -31,7 +41,31 @@ export default {
          * @returns void
          */
         showProfile() {
-            // TODO: do something
+            this.$router.push({
+                name: 'userprofile',
+    
+            })
+        },
+        passwordChangeScreen() {
+            this.$router.push({
+                name: "change_password"
+            });
+        },
+        userList(){
+            this.$router.push({
+                name: "user-list",
+            })
+        },
+        userProfile(){
+            this.$router.push({
+                name: "userprofile",
+            })
+        },
+        postList(){
+            this.$router.push({
+                name: "post-list",
+            })
         },
     },
+    
 };
