@@ -2,13 +2,7 @@
   <v-card class="card">
     <v-card-title> User Create Confirm </v-card-title>
     <v-container>
-      <form>
-        <v-img
-          lazy-src="https://picsum.photos/id/11/10/6"
-          max-height="150"
-          max-width="250"
-          src="https://picsum.photos/id/11/500/300"
-        ></v-img>
+      <form  enctype="multipart/form-data">
         <v-col md="2.5">Name : {{ this.$route.params.name }}</v-col>
         <v-col md="2.5">Email Address :{{ this.$route.params.email }}</v-col>
         <v-col md="2.5">Password :{{ this.$route.params.password }}</v-col>
@@ -16,7 +10,7 @@
         <v-col md="2.5">Phone : {{ this.$route.params.phone }} </v-col>
         <v-col md="2.5">Date of Birth : {{ this.$route.params.dob }}</v-col>
         <v-col md="2.5">Address : {{ this.$route.params.address }}</v-col>
-         <v-col md="2.5">Profile : {{ this.$route.params.profile }}</v-col>
+         <v-col md="2.5">Profile : {{ this.$route.params.image.name }}</v-col>
         <v-btn class="mr-4 mt-5" @click="store()" color="success">
           Confirm
         </v-btn>

@@ -10,6 +10,7 @@ export default {
          type:1,
         phone: "",
         address: "",
+        profile: "",
         dob: "",
         error: "",
 
@@ -50,17 +51,12 @@ export default {
             value => !!value || "Date of birth is required."
         ],
 
-        //   validation rules for profile.
-        //  profileRules: [
-        //     value => !!value || "Profile is required."
-        // ],
-
     }),
     computed: {
         ...mapGetters(["userId"]),
     },
     mounted() {
-        
+        console.log( this.$route.params.data)
     },
     methods: {
         /**
@@ -80,18 +76,13 @@ export default {
           },
           store(){
             this.$axios
-            .post("/api/users", {
-                name : this.$route.params.name,
-                email : this.$route.params.email,
-                password : this.$route.params.password,
-                type : this.$route.params.type ,
-                phone : this.$route.params.phone,
-                address : this.$route.params.address,
-                dob : this.$route.params.dob,
-                profile : this.$route.params.profile,
-                created_user_id : this.userId,
+            .post("/api/users",
+            this.$route.params.data
+            ,{
+                headers: { 'content-type': 'multipart/form-data' }
+            }
 
-            })
+            )
 
             .then((response) => {
                 console.log(response)

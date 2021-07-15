@@ -12,7 +12,9 @@ export default {
         dob: "",
         profile: "",
         items: ['Admin', 'User'],
+        url: null,
         error: "",
+
 
          // validation rules for user name.
          nameRules: [
@@ -95,25 +97,34 @@ export default {
         // }
 
         confirmPage(event) {
-            // let data = new FormData();
-            // data.append('file', this.profile);
+          
+            let formData = new FormData();
+            formData.append('profile', this.profile);
+            formData.append('name', this.name);
+            formData.append('email', this.email);
+            formData.append('password', this.password);
+            formData.append('type', this.type);
+            formData.append('phone', this.phone);
+            formData.append('address', this.address);
+            formData.append('dob', this.dob);
+            formData.append('created_user_id',1);
 
             event.preventDefault()
             this.$router.push({ 
                 name: 'user_create_confirm',
                 params: { 
-                     name: this.name ,
-                     email : this.email ,
-                     password: this.password ,
+                     name: this.name,
+                     email : this.email,
+                     password: this.password,
                      confirm_password: this.confirm_password,
                      type : this.type,
-                     phone : this.phone ,
-                     address : this.address ,
-                     dob : this.dob ,
-                     profile: this.profile,
+                     phone : this.phone,
+                     address : this.address,
+                     dob : this.dob,
+                     image : this.profile,
+                    data: formData
                }
               })
-
         },
         selectType(){
             if(this._data.type == 'Admin'){
@@ -127,5 +138,10 @@ export default {
         onChange(e){
             this.profile = e.target.files[0];
         },
+        onFileChange(e) {
+            const file = e.target.files[0];
+            this.url = URL.createObjectURL(file);
+            this.profile = e.target.files[0];
+          }
     },
 };
