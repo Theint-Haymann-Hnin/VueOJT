@@ -95,7 +95,6 @@ export default {
                 console.log(err);
             });
         },
-
         getAllPosts(){
             this.$axios
                 .get("/api/posts")
@@ -108,7 +107,7 @@ export default {
                 });
         },
         findPost(){
-            // console.log(this.search_data)
+            console.log(this.search_data)
             this.$axios
             .get("/api/posts/search", { params: { 
                 'search_data': this.search_data
@@ -128,7 +127,7 @@ export default {
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', 'post.xlsx'); //or any other extension
+                link.setAttribute('download', 'post.xlsx'); 
                 document.body.appendChild(link);
             link.click();
             });

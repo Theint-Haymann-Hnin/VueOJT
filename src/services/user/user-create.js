@@ -1,4 +1,6 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 export default {
     data: () => ({
         valid: true,
@@ -14,10 +16,9 @@ export default {
         items: ['Admin', 'User'],
         url: null,
         error: "",
-
-
-         // validation rules for user name.
-         nameRules: [
+        
+        // validation rules for user name.
+        nameRules: [
             value => !!value || "The name field is required."
         ],
 
@@ -29,11 +30,11 @@ export default {
         // validation rules for password.
         passwordRules: [
             value => !!value || "The password field is required.",
-            value =>  /^(?:(?=.*\d)(?=.*[A-Z]).*){8}$/.test(value) || "Password must be valid."
+            value => /^(?:(?=.*\d)(?=.*[A-Z]).*){8}$/.test(value) || "Password must be valid."
         ],
 
         //validation rules for confirm password.
-        confirm_pwdRules:  [
+        confirm_pwdRules: [
             value => !!value || "The confirm password field is required.",
             // value =>  same:password.test(value) || "new Password and new confirm password must be same"
         ],
@@ -52,15 +53,6 @@ export default {
         dobRules: [
             value => !!value || "Date of birth is required."
         ],
-
-    //    validation rules for profile.
-    //      profileRules: [
-    //         value => !!value || "Profile is required."
-    //     ],
-
-
-
-       
     }),
     computed: {
         ...mapGetters(["isLoggedIn"]),
@@ -73,31 +65,26 @@ export default {
         },
     },
     mounted() {
-        
+
     },
     methods: {
         /**
          * This is to filter posts of datatable.
          * @returns void
          */
-         clear () {
-             this.name = ''
-             this.email = ''
-             this.password = ''
-             this.confirm_password = ''
-             this.type = ''
-             this.phone = ''
-             this.address = ''
-             this.dob = ''
-          
+        clear() {
+            this.name = ''
+            this.email = ''
+            this.password = ''
+            this.confirm_password = ''
+            this.type = ''
+            this.phone = ''
+            this.address = ''
+            this.dob = ''
+
         },
-
-        //   confirmPage(){
-        //     this.$router.push({ name: "user_create_confirm" });
-        // }
-
         confirmPage(event) {
-          
+
             let formData = new FormData();
             formData.append('profile', this.profile);
             formData.append('name', this.name);
@@ -107,41 +94,39 @@ export default {
             formData.append('phone', this.phone);
             formData.append('address', this.address);
             formData.append('dob', this.dob);
-            formData.append('created_user_id',1);
-
+            formData.append('created_user_id', 1);
             event.preventDefault()
-            this.$router.push({ 
+            this.$router.push({
                 name: 'user_create_confirm',
-                params: { 
-                     name: this.name,
-                     email : this.email,
-                     password: this.password,
-                     confirm_password: this.confirm_password,
-                     type : this.type,
-                     phone : this.phone,
-                     address : this.address,
-                     dob : this.dob,
-                     image : this.profile,
+                params: {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    confirm_password: this.confirm_password,
+                    type: this.type,
+                    phone: this.phone,
+                    address: this.address,
+                    dob: this.dob,
+                    image: this.profile,
                     data: formData
-               }
-              })
+                }
+            })
         },
-        selectType(){
-            if(this._data.type == 'Admin'){
+        selectType() {
+            if (this._data.type == 'Admin') {
                 this.type = 0;
+            } else {
+                this.type = 1;
             }
-            else{
-                this.type =1;
-            }
-            console.log(this.type) 
+            console.log(this.type)
         },
-        onChange(e){
+        onChange(e) {
             this.profile = e.target.files[0];
         },
         onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
             this.profile = e.target.files[0];
-          }
+        }
     },
 };

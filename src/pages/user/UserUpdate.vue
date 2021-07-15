@@ -47,14 +47,10 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-        <v-text-field
-          v-model="profile"
-          type="file"
-          label="Profile"
-          :rules="profileRules"
-          hide-details="auto"
-          class="mb-5 mt-5"
-        ></v-text-field>
+       <input type="file" @change="onFileChange" class="mt-5" />
+        <div id="preview">
+          <img v-if="url" :src="url" />
+        </div>
         <v-card-text
           ><a href="/change_password">Change Password</a></v-card-text
         >

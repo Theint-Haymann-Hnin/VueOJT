@@ -3,14 +3,6 @@
     <v-card-title> User Profile </v-card-title>
     <v-container>
       <v-row class="mt-5 mb-5" ma-0 pa-0 fill-height>
-        <v-col md="2.5" xs4
-          ><v-img
-            lazy-src="https://picsum.photos/id/11/10/6"
-            max-height="150"
-            max-width="250"
-            src="https://picsum.photos/id/11/500/300"
-          ></v-img>
-        </v-col>
       </v-row>
       <v-row ma-0 pa-0 fill-height>
         <v-col md="2.5" xs4>Name </v-col>
@@ -35,6 +27,10 @@
       <v-row ma-0 pa-0 fill-height>
         <v-col md="2.5" xs4>Address </v-col>
         <v-col md="2.5" xs4>{{ user.address }}</v-col>
+      </v-row>
+      <v-row ma-0 pa-0 fill-height>
+        <v-col md="2.5" xs4>Profile</v-col>
+        <v-col md="2.5" xs4> {{ user.profile }}</v-col>
       </v-row>
     </v-container>
   </v-card>

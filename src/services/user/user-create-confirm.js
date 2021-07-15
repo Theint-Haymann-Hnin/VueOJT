@@ -1,21 +1,23 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 export default {
-    
+
     data: () => ({
         valid: true,
         name: "",
         email: "",
         password: "",
         confirm_password: "",
-         type:1,
+        type: 1,
         phone: "",
         address: "",
         profile: "",
         dob: "",
         error: "",
 
-         // validation rules for user name.
-         nameRules: [
+        // validation rules for user name.
+        nameRules: [
             value => !!value || "The name field is required."
         ],
 
@@ -27,11 +29,11 @@ export default {
         // validation rules for password.
         passwordRules: [
             value => !!value || "The password field is required.",
-            value =>  /^(?:(?=.*\d)(?=.*[A-Z]).*){8}$/.test(value) || "Password must be valid."
+            value => /^(?:(?=.*\d)(?=.*[A-Z]).*){8}$/.test(value) || "Password must be valid."
         ],
 
         //validation rules for confirm password.
-        confirm_pwdRules:  [
+        confirm_pwdRules: [
             value => !!value || "The confirm password field is required.",
             // value =>  same:password.test(value) || "new Password and new confirm password must be same"
         ],
@@ -56,43 +58,42 @@ export default {
         ...mapGetters(["userId"]),
     },
     mounted() {
-        console.log( this.$route.params.data)
+        console.log(this.$route.params.data)
     },
     methods: {
         /**
          * This is to filter posts of datatable.
          * @returns void
          */
-         clear () {
-             this.name = ''
-             this.email = ''
-             this.password = ''
-             this.confirm_password = ''
-             this.type = ''
-             this.phone = ''
-             this.address = ''
-             this.dob = ''
-             this.profile = ''
-          },
-          store(){
+        clear() {
+            this.name = ''
+            this.email = ''
+            this.password = ''
+            this.confirm_password = ''
+            this.type = ''
+            this.phone = ''
+            this.address = ''
+            this.dob = ''
+            this.profile = ''
+        },
+        store() {
             this.$axios
-            .post("/api/users",
-            this.$route.params.data
-            ,{
-                headers: { 'content-type': 'multipart/form-data' }
-            }
-
-            )
-
-            .then((response) => {
-                console.log(response)
-                this.$router.push({ name: "user-list" });
-             
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-         }
-          
+                .post("/api/users",
+                    this.$route.params.data, {
+                        headers: {
+                            'content-type': 'multipart/form-data'
+                        }
+                    }
+                )
+                .then((response) => {
+                    console.log(response)
+                    this.$router.push({
+                        name: "user-list"
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
     },
 };

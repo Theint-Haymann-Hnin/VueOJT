@@ -47,6 +47,11 @@
         <template v-slot:[`item.name`]="{ item }">
           <a v-if="item.name" @click="showUser(item)">{{ item.name }}</a>
         </template>
+        <template v-slot:[`item.created_user_id`]="{ item }">
+          <v-card-text v-if="item.created_user_id">
+            {{ userName }}
+          </v-card-text>
+        </template>
         <template v-slot:[`item.created_at`]="{ item }">
           <v-card-text v-if="item.created_at">{{
             format(item.created_at)

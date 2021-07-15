@@ -1,16 +1,18 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 export default {
-  
+
     data: () => ({
         valid: true,
-        id:'',
+        id: '',
         password: "",
         new_password: "",
         confirm_password: "",
-        loginUserID:"",
+        loginUserID: "",
         error: "",
 
-         // validation rules for user name.
+        // validation rules for user name.
         passwordRules: [
             value => !!value || "The password field is required."
         ],
@@ -22,10 +24,6 @@ export default {
         confirm_passwordRules: [
             value => !!value || "The confirm password field is required."
         ],
-
-
-
-       
     }),
     computed: {
         ...mapGetters(["isLoggedIn"]),
@@ -46,22 +44,20 @@ export default {
          * This is to filter posts of datatable.
          * @returns void
          */
-         updatePassword() {
+        updatePassword() {
             this.$axios
                 .post("/api/change_password/" + this.loginUserID, {
                     id: this.id,
                     password: this.password,
                     new_password: this.new_password,
-                    login_user_id : this.loginUserID,
+                    login_user_id: this.loginUserID,
                 })
                 .then((response) => {
                     console.log(response)
                     this.$router.push({
                         name: "user-list"
                     });
-
                 })
         }
     },
 };
-

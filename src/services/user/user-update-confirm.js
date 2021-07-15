@@ -10,6 +10,7 @@ export default {
         type: 1,
         phone: "",
         address: "",
+        profile: "",
         dob: "",
         error: "",
 
@@ -92,16 +93,21 @@ export default {
 
         updateUser() {
             this.$axios
-                .put("/api/users/" + this.id, {
-                    id: this.id,
-                    name: this.name,
-                    email: this.email,
-                    type: this.type,
-                    phone: this.phone,
-                    address: this.address,
-                    dob: this.dob,
-                    updated_user_id: this.loginUserID
-                })
+                .put("/api/users/" + this.id,
+                {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                // {
+                //     id: this.id,
+                //     name: this.name,
+                //     email: this.email,
+                //     type: this.type,
+                //     phone: this.phone,
+                //     address: this.address,
+                //     dob: this.dob,
+                //     updated_user_id: this.loginUserID
+                // }
+                )
                 .then((response) => {
                     console.log(response)
                     this.$router.push({

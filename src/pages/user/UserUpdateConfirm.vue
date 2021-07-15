@@ -8,6 +8,7 @@
       <v-col md="2.5" xs4>Phone : {{ this.$route.params.phone }} </v-col>
       <v-col md="2.5" xs4>Date of Birth : {{ this.$route.params.dob }}</v-col>
       <v-col md="2.5" xs4>Address : {{ this.$route.params.address }}</v-col>
+      <v-col md="2.5" xs4>Profile : {{ this.$route.params.image.name }}</v-col>
     </v-container>
     <v-container>
       <form>

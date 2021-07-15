@@ -1,4 +1,6 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 import moment from "moment";
 export default {
     data() {
@@ -7,12 +9,11 @@ export default {
             email: '',
             createFrom: '',
             createTo: '',
-           userInfo: null,
+            userInfo: null,
             dialogTitle: "",
             dialog: false,
             isDeleteDialog: false,
-            headerList: [
-                {
+            headerList: [{
                     text: "ID",
                     align: "start",
                     value: "id",
@@ -54,12 +55,12 @@ export default {
                     value: "operation",
                 },
             ],
-           userList: [],
+            userList: [],
             showList: [],
         };
     },
     computed: {
-        ...mapGetters(["isLoggedIn"]),
+        ...mapGetters(["isLoggedIn", "userName"]),
         headers() {
             if (!this.isLoggedIn) {
                 return this.headerList.slice(0, this.headerList.length - 1);
@@ -75,7 +76,7 @@ export default {
         format(value) {
             return moment(value).format('YYYY-MM-DD')
         },
-        showUser(item){
+        showUser(item) {
             this.$router.push({
                 name: 'userprofile',
                 params: {
@@ -97,53 +98,54 @@ export default {
                     user.dob.includes(this.keyword) ||
                     user.address.includes(this.keyword) ||
                     user.created_at.includes(this.keyword) ||
-                    user.updated_at.includes(this.keyword) 
+                    user.updated_at.includes(this.keyword)
                 );
             });
         },
-        userCreate(){
-            this.$router.push({ name: "user-create" });
+        userCreate() {
+            this.$router.push({
+                name: "user-create"
+            });
         },
         update(item) {
-            this.$router.push({ 
+            this.$router.push({
                 name: 'user-update',
-                params: { 
+                params: {
                     id: item.id,
-               }
+                }
             })
-
         },
-        
         deleteUser(item) {
-           
-            this.$axios
-            .delete("/api/users/"+item.id)
-            .then((response) => {
-                console.log(response);
-                this.findUser();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        },
-        findUser(){
-            this.$axios
-            .get("/api/users_search", { params: { 
-                'name': this.name,
-                'email': this.email,
-                'start_date': this.createFrom,
-                'end_date': this.createTo,
-             } })
-            .then((response) => {
-                this.userList = response.data.data;
-                this.showList = this.userList;
-                console.log(response.data.data);
 
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+            this.$axios
+                .delete("/api/users/" + item.id)
+                .then((response) => {
+                    console.log(response);
+                    this.findUser();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        findUser() {
+            this.$axios
+                .get("/api/users_search", {
+                    params: {
+                        'name': this.name,
+                        'email': this.email,
+                        'start_date': this.createFrom,
+                        'end_date': this.createTo,
+                    }
+                })
+                .then((response) => {
+                    this.userList = response.data.data;
+                    this.showList = this.userList;
+                    console.log(response.data.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     },
-    
+
 };

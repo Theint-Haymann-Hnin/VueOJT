@@ -10,7 +10,6 @@
           :rules="nameRules"
           hide-details="auto"
         ></v-text-field>
-
         <v-text-field
           v-model="email"
           type="text"
@@ -19,7 +18,6 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-
         <v-text-field
           v-model="password"
           type="password"
@@ -28,7 +26,6 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-
         <v-text-field
           v-model="confirm_password"
           type="password"
@@ -37,7 +34,6 @@
           class="mt-5"
           hide-details="auto"
         ></v-text-field>
-
         <v-select
           :items="items"
           :menu-props="{ top: true, offsetY: true }"
@@ -46,7 +42,6 @@
           v-model="type"
           @change="selectType()"
         ></v-select>
-
         <v-text-field
           v-model="phone"
           type="text"
@@ -55,7 +50,6 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-
         <v-text-field
           v-model="address"
           type="text"
@@ -64,7 +58,6 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-
         <v-text-field
           v-model="dob"
           type="date"
@@ -73,9 +66,7 @@
           hide-details="auto"
           class="mt-5"
         ></v-text-field>
-
-        <input type="file" @change="onFileChange" class="mt-5">
-
+        <input type="file" @change="onFileChange" class="mt-5" />
         <div id="preview">
           <img v-if="url" :src="url" />
         </div>
@@ -85,9 +76,7 @@
     </v-container>
   </v-card>
 </template>
-
 <script src="../../services/user/user-create.js">
 </script>
-
 <style scoped src="../../assets/css/pages/user/user-create.css">
 </style>
