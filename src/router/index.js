@@ -83,7 +83,7 @@ const routes = [{
         component: UserCreateConfirm,
     },
     {
-        path: "/user/update",
+        path: "/user/update/:id",
         name: "user-update",
         component: UserUpdate,
     },

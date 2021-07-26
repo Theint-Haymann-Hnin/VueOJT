@@ -140,12 +140,10 @@ export default {
                 .then((response) => {
                     this.userList = response.data.data;
                     this.showList = this.userList;
-                    console.log(response.data.data);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
         }
     },
-
 };

@@ -5,10 +5,9 @@ export default {
 
     data: () => ({
         valid: true,
+        id: "",
         name: "",
         email: "",
-        password: "",
-        confirm_password: "",
         type: 1,
         phone: "",
         address: "",
@@ -71,13 +70,14 @@ export default {
         this.$axios
             .get("/api/users/" + this.id)
             .then((response) => {
+                this.id = response.data.id
                 this.name = response.data.name
                 this.email = response.data.email
-                this.password = response.data.password
                 this.type = response.data.type
                 this.phone = response.data.phone
                 this.address = response.data.address
                 this.dob = response.data.dob
+                this.profile = response.data.profile
             })
             .catch((err) => {
                 console.log(err);
@@ -99,21 +99,19 @@ export default {
             this.dob = ''
             this.profile = ''
         },
-
-        submit() {
-
-        },
-        userUpdate() {
+        userConfirmUpdate(event) {
+            event.preventDefault()
             let formData = new FormData();
+            formData.append("_method", "put");
+            formData.append('id', this.id);
             formData.append('profile', this.profile);
             formData.append('name', this.name);
             formData.append('email', this.email);
-            formData.append('password', this.password);
             formData.append('type', this.type);
             formData.append('phone', this.phone);
             formData.append('address', this.address);
             formData.append('dob', this.dob);
-            formData.append('created_user_id', 1);
+            formData.append('updated_user_id', 1);
             this.$router.push({
                 name: 'user_update_confirm',
                 params: {
@@ -142,6 +140,5 @@ export default {
             this.url = URL.createObjectURL(file);
             this.profile = e.target.files[0];
         }
-
     },
 };

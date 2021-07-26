@@ -6,7 +6,6 @@ export default {
     data: () => ({
         user: null,
         id: '',
-
     }),
     computed: {
         ...mapGetters(["isLoggedIn"]),

@@ -1,7 +1,7 @@
 export default {
-
     data: () => ({
         valid: true,
+        id: "",
         name: "",
         email: "",
         password: "",
@@ -13,6 +13,7 @@ export default {
         profile: "",
         dob: "",
         error: "",
+        data: "",
 
         // validation rules for user name.
         nameRules: [
@@ -55,17 +56,15 @@ export default {
         profileRules: [
             value => !!value || "Profile is required."
         ],
-
-
-
-
     }),
-
     mounted() {
+        for (var value of this.$route.params.data.values()) {
+            console.log(value);
+        }
+        this.data = this.$route.params.data
         this.id = this.$route.params.id
         this.name = this.$route.params.name
         this.email = this.$route.params.email
-        this.password = this.$route.params.password
         this.type = this.$route.params.type
         this.phone = this.$route.params.phone
         this.address = this.$route.params.address
@@ -92,28 +91,24 @@ export default {
         },
 
         updateUser() {
+            for (var value of this.$route.params.data.values()) {
+                console.log(value);
+            }
+            console.log(this.$route.params.data)
+
             this.$axios
-                .put("/api/users/" + this.id,
-                {
-                    headers: { 'content-type': 'multipart/form-data' }
-                }
-                // {
-                //     id: this.id,
-                //     name: this.name,
-                //     email: this.email,
-                //     type: this.type,
-                //     phone: this.phone,
-                //     address: this.address,
-                //     dob: this.dob,
-                //     updated_user_id: this.loginUserID
-                // }
+                .post("/api/users/89",
+                    this.$route.params.data, {
+                        headers: {
+                            'content-type': 'multipart/form-data'
+                        }
+                    }
                 )
                 .then((response) => {
                     console.log(response)
                     this.$router.push({
                         name: "user-list"
                     });
-
                 })
         }
     },

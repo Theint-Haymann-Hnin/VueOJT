@@ -16,7 +16,7 @@ export default {
         items: ['Admin', 'User'],
         url: null,
         error: "",
-        
+
         // validation rules for user name.
         nameRules: [
             value => !!value || "The name field is required."

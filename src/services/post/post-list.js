@@ -37,7 +37,7 @@ export default {
             description: '',
             status: '',
             search_data: ''
-            
+
         };
     },
     computed: {
@@ -52,8 +52,6 @@ export default {
     },
     mounted() {
         this.getAllPosts();
-            
-            
     },
     methods: {
         /**
@@ -75,27 +73,26 @@ export default {
             });
         },
         update(item) {
-            this.$router.push({ 
+            this.$router.push({
                 name: 'post-update',
-                params: { 
+                params: {
                     id: item.id,
-               }
+                }
             })
-
         },
         deletePost(item) {
-           
+
             this.$axios
-            .delete("/api/posts/"+item.id)
-            .then((response) => {
-                console.log(response);
-                this.getAllPosts();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                .delete("/api/posts/" + item.id)
+                .then((response) => {
+                    console.log(response);
+                    this.getAllPosts();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
-        getAllPosts(){
+        getAllPosts() {
             this.$axios
                 .get("/api/posts")
                 .then((response) => {
@@ -106,40 +103,40 @@ export default {
                     console.log(err);
                 });
         },
-        findPost(){
+        findPost() {
             console.log(this.search_data)
             this.$axios
-            .get("/api/posts/search", { params: { 
-                'search_data': this.search_data
-             } })
-            .then((response) => {
-                this.postList = response.data.data;
-                this.showList = this.postList;
-                console.log(response.data.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                .get("/api/posts/search", {
+                    params: {
+                        'search_data': this.search_data
+                    }
+                })
+                .then((response) => {
+                    this.postList = response.data.data;
+                    this.showList = this.postList;
+                    console.log(response.data.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
-        excelDownload(){
-            axios.post("/api/exportExcel", {responseType: 'blob'})
-            .then(response=>{
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'post.xlsx'); 
-                document.body.appendChild(link);
-            link.click();
-            });
+        excelDownload() {
+            axios.post("/api/exportExcel", {
+                    responseType: 'blob'
+                })
+                .then(response => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'post.xlsx');
+                    document.body.appendChild(link);
+                    link.click();
+                });
         },
-        excelUploadPage(){
+        excelUploadPage() {
             this.$router.push({
                 name: "upload_post"
             });
         }
-   }
-    
-    
+    }
 }
-
-

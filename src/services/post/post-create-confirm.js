@@ -1,17 +1,18 @@
-import { mapGetters } from "vuex";
+import {
+    mapGetters
+} from "vuex";
 export default {
     data: () => ({
         valid: true,
         title: "",
         description: "",
         error: "",
-
-         // validation rules for title
-         titleRules: [
+        // validation rules for title
+        titleRules: [
             value => !!value || "The title field is required."
         ],
-         // validation rules for title
-         descriptionRules: [
+        // validation rules for title
+        descriptionRules: [
             value => !!value || "The description field is required."
         ],
     }),
@@ -25,23 +26,25 @@ export default {
          * This is to filter posts of datatable.
          * @returns void
          */
-         store(){
+        store() {
             this.$axios
-            .post("/api/posts", {
-                title : this.$route.params.title,
-                description : this.$route.params.description,
-                created_user_id : this.userId,
+                .post("/api/posts", {
+                    title: this.$route.params.title,
+                    description: this.$route.params.description,
+                    created_user_id: this.userId,
 
-            })
-            .then((response) => {
-                console.log(response)
-                this.$router.push({ name: "post-list" });
-             
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-         }
-          
+                })
+                .then((response) => {
+                    console.log(response)
+                    this.$router.push({
+                        name: "post-list"
+                    });
+
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
     },
 };

@@ -2,7 +2,7 @@
   <v-card class="card">
     <v-card-title> User Update </v-card-title>
     <v-container>
-      <form enctype="multipart/form-data">
+      <form enctype="multipart/form-data" @submit="userConfirmUpdate($event)">
         <v-text-field
           v-model="name"
           type="text"
@@ -54,7 +54,7 @@
         <v-card-text
           ><a href="/change_password">Change Password</a></v-card-text
         >
-        <v-btn class="mr-4 mt-5" @click="userUpdate()" color="success">
+        <v-btn class="mr-4 mt-5"  color="success" type="submit">
           Confirm
         </v-btn>
         <v-btn @click="clear()" color="secondary" class="mt-5"> clear </v-btn>
