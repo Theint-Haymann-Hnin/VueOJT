@@ -28,7 +28,7 @@ export default {
                 },
                 {
                     text: "Created User",
-                    value: "created_user_id",
+                    value: "created_user.name",
                 },
                 {
                     text: "Phone",
@@ -71,6 +71,7 @@ export default {
     },
     mounted() {
         this.findUser();
+        console.log(this)
     },
     methods: {
         format(value) {
@@ -140,6 +141,7 @@ export default {
                 .then((response) => {
                     this.userList = response.data.data;
                     this.showList = this.userList;
+                    console.log(response.data.data);
                 })
                 .catch((err) => {
                     console.log(err);

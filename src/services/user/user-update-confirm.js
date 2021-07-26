@@ -97,7 +97,7 @@ export default {
             console.log(this.$route.params.data)
 
             this.$axios
-                .post("/api/users/89",
+                .post("/api/users/" + this.id,
                     this.$route.params.data, {
                         headers: {
                             'content-type': 'multipart/form-data'

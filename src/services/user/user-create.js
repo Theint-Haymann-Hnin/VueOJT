@@ -16,7 +16,7 @@ export default {
         items: ['Admin', 'User'],
         url: null,
         error: "",
-
+        
         // validation rules for user name.
         nameRules: [
             value => !!value || "The name field is required."
@@ -55,7 +55,7 @@ export default {
         ],
     }),
     computed: {
-        ...mapGetters(["isLoggedIn"]),
+        ...mapGetters(["isLoggedIn","userId"]),
         headers() {
             if (!this.isLoggedIn) {
                 return this.headerList.slice(0, this.headerList.length - 1);
@@ -65,7 +65,7 @@ export default {
         },
     },
     mounted() {
-
+       
     },
     methods: {
         /**
@@ -94,7 +94,7 @@ export default {
             formData.append('phone', this.phone);
             formData.append('address', this.address);
             formData.append('dob', this.dob);
-            formData.append('created_user_id', 1);
+            formData.append('created_user_id', this.userId);
             event.preventDefault()
             this.$router.push({
                 name: 'user_create_confirm',
